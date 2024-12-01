@@ -1,0 +1,53 @@
+package encryptor
+
+import (
+	"testing"
+)
+
+var (
+	serverPubKey = [32]byte{
+		0x83, 0x3e, 0x0d, 0x8e, 0xba, 0x74, 0xf4, 0x4f,
+		0x78, 0x08, 0x43, 0xbf, 0x3f, 0x1c, 0x7a, 0x67,
+		0x9a, 0x6d, 0x0a, 0x3d, 0x1c, 0x63, 0xd8, 0xf9,
+		0x2e, 0x18, 0xf3, 0xc9, 0x9a, 0x22, 0x9b, 0xa5,
+	}
+
+	clientPubKey = [32]byte{
+		0xc9, 0x5c, 0x04, 0xfd, 0xd9, 0x79, 0x9f, 0x2b,
+		0xc1, 0xea, 0x9a, 0x03, 0x80, 0x3d, 0xb0, 0xc4,
+		0x1d, 0xbe, 0xf8, 0x30, 0x8a, 0x76, 0xa9, 0x6f,
+		0x09, 0x0c, 0xe6, 0x6b, 0x6e, 0xb5, 0x21, 0x96,
+	}
+)
+
+func TestLoadKey(t *testing.T) {
+	// Add tests for LoadKey function
+}
+
+func TestGenerateKeyPair(t *testing.T) {
+	priv, pub := GenerateKeyPair()
+	if len(priv) != 32 || len(pub) != 32 {
+		t.Errorf("unexpected key sizes")
+	}
+}
+
+func TestGetSharedSecret(t *testing.T) {
+	priv, _ := GenerateKeyPair()
+	secret, err := GetSharedSecret(priv, serverPubKey)
+	if err != nil {
+		t.Errorf("failed to get shared secret: %v", err)
+	}
+	if len(secret) != 32 {
+		t.Errorf("unexpected shared secret size")
+	}
+}
+
+func TestEncrypt(t *testing.T) {
+	priv, _ := GenerateKeyPair()
+	sharedSecret, _ := GetSharedSecret(priv, serverPubKey)
+	plaintext := []byte("example plaintext")
+	ciphertext := Encrypt(sharedSecret, plaintext)
+	if len(ciphertext) == 0 {
+		t.Errorf("encryption failed")
+	}
+}
