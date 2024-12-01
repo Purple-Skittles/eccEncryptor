@@ -2,7 +2,7 @@ package decryptor
 
 import (
   "testing"
-  "github.com/Purple-Skittles/encryptor/encryptor"
+  "github.com/Purple-Skittles/encryptor"
 )
 
 var (
@@ -47,9 +47,14 @@ func TestDecrypt(t *testing.T) {
 	priv, _ := GenerateKeyPair()
 	sharedSecret, _ := GetSharedSecret(priv, serverPubKey)
 	text := []byte("example plaintext")
-  cipherTest := Encrypt(sharedSecret, text)
-	ciphertext := Decrypt(sharedSecret, plaintext)
-	if len(ciphertext) == 0 {
+  cipherText := encryptor.Encrypt(sharedSecret, text)
+	plaintext, _ := Decrypt(sharedSecret, cipherText)
+
+	if len(cipherText) == 0 {
 		t.Errorf("encryption failed")
 	}
+
+  if string(text) != string(plaintext) {
+    t.Errorf("decryption failed")
+  }
 }
