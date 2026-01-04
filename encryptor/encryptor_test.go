@@ -3,8 +3,8 @@ package encryptor
 import (
 	"bytes"
 	"crypto/subtle"
-	"eccencryptor/testdata/keys"
 	"embed"
+	"github.com/Purple-Skittles/eccEncryptor/testData"
 	"testing"
 )
 
@@ -109,14 +109,6 @@ func TestGetSharedSecret(t *testing.T) {
 	if !bytes.Equal(secret[:], expectedSharedSecret[:]) {
 		t.Errorf("shared secret does not match expected value")
 	}
-	// priv, _ := GenerateKeyPair()
-	// secret, err := GetSharedSecret(priv, serverPubKey)
-	// if err != nil {
-	// 	t.Errorf("failed to get shared secret: %v", err)
-	// }
-	// if len(secret) != 32 {
-	// 	t.Errorf("unexpected shared secret size")
-	// }
 }
 
 func TestEncrypt(t *testing.T) {

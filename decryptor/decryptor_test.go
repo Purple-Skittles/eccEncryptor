@@ -3,9 +3,9 @@ package decryptor
 import (
 	"bytes"
 	"crypto/subtle"
-	"eccencryptor/testdata/keys"
 	"embed"
-	"github.com/Purple-Skittles/encryptor"
+	"github.com/Purple-Skittles/eccEncryptor/encryptor"
+	"github.com/Purple-Skittles/eccEncryptor/testData"
 	"testing"
 )
 
