@@ -27,8 +27,8 @@ package main
 import (
     "fmt"
     "log"
-    "github.com/yourusername/yourproject/encryptor"
-    "github.com/yourusername/yourproject/decryptor"
+    "github.com/Purple-Skittles/eccEncryptor/encryptor"
+    "github.com/Purple-Skittles/eccEncryptor/decryptor"
 )
 
 func main() {
@@ -72,7 +72,7 @@ package main
 import (
     "embed"
     "log"
-    "github.com/yourusername/yourproject/encryptor"
+    "github.com/Purple-Skittles/eccEncryptor/encryptor"
 )
 
 //go:embed keys/*
