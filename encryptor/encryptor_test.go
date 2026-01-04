@@ -4,8 +4,9 @@ import (
 	"bytes"
 	"crypto/subtle"
 	"embed"
-	"github.com/Purple-Skittles/eccEncryptor/testData"
 	"testing"
+
+	"github.com/Purple-Skittles/eccEncryptor/testData"
 )
 
 var (
