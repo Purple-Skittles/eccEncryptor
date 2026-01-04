@@ -1,3 +1,5 @@
+// Deprecarted: This project is no longer maintained. Please refer to github.com/Purple-Skittles/streamCipherEcc
+
 module github.com/Purple-Skittles/eccEncryptor
 
 go 1.25.5
